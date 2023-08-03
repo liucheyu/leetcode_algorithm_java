@@ -1,0 +1,11 @@
+
+l
+java:S1149w"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(›¯’g8ŒÅáÍ®0
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ÀŠˆ¾ûÿÿÿÿ
+h
+java:S37763"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(Á€àâ
+t
+java:S3012I"YUse "Arrays.copyOf", "Arrays.asList", "Collections.addAll" or "System.arraycopy" instead.(¼­•§ûÿÿÿÿ
+u
+java:S2293w"YReplace the type specification in this constructor call with the diamond operator ("<>").(›¯’g8†‹áÍ®0
+n	java:S135O"YReduce the total number of break and continue statements in this loop to use at most one.(˜¯ªˆ

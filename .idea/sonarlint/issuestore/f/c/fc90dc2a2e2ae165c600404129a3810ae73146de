@@ -1,0 +1,10 @@
+
+S	java:S106"9Replace this use of System.out or System.err by a logger.(®ıáëûÿÿÿÿ
+1
+java:S36266"Remove this redundant jump.(ÉŠ©ƒ
+C
+java:S1128"(Remove this unused import 'javax.swing'.(Ìí¿Üüÿÿÿÿ
+T
+java:S1128"9Remove this unused import 'java.awt.image.BufferedImage'.(×íĞ‡şÿÿÿÿ
+s	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(ØÕ—©ıÿÿÿÿ
+n	java:S135)"YReduce the total number of break and continue statements in this loop to use at most one.(åæòü

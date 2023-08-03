@@ -1,0 +1,6 @@
+
+P	java:S125"<This block of commented-out lines of code should be removed.(“í¢T
+S	java:S106"9Replace this use of System.out or System.err by a logger.(®ıáëûÿÿÿÿ
+@
+java:S1659"%Declare "leftsum" on a separate line.(ÑúÔ’úÿÿÿÿ
+s	java:S135P"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆÿÿÿÿÿ
