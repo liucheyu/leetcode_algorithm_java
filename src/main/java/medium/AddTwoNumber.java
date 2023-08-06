@@ -4,14 +4,15 @@ public class AddTwoNumber {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        ListNode listNode1 = solution.createListNode(new int[]{2, 4, 3}, 0);
-        ListNode listNode2 = solution.createListNode(new int[]{5, 6, 4}, 0);
+        ListNode listNode1 = solution.createListNode(new int[]{9,9,9,9,9,9,9}, 0);
+        ListNode listNode2 = solution.createListNode(new int[]{9,9,9,9}, 0);
 //        solution.printListNode(listNode1);
 //        System.out.println();
 //        solution.printListNode(listNode2);
 
         ListNode listNode = solution.addTwoNumbers(listNode1, listNode2);
         solution.printListNode(listNode);
+        System.out.println();
     }
 
 
@@ -32,34 +33,44 @@ class Solution {
         int tenMutiple;
         while (l1 != null || l2 != null) {
             len++;
-            tenMutiple = 10 ^ len;
+            tenMutiple = (int) Math.pow(10, len);
             if (l1 != null) {
                 sum += l1.val * tenMutiple;
                 l1 = l1.next;
             }
-            if (l1 != null) {
-                sum += l1.val * tenMutiple;
+            if (l2 != null) {
+                sum += l2.val * tenMutiple;
                 l2 = l2.next;
             }
 
-
         }
 
 
-       return createListNodeBySum(sum, 0, len);
+       return createListNodeBySum(sum);
     }
 
-    public ListNode createListNodeBySum(int sum, int start, int len) {
+    // 807 708
+    public ListNode createListNodeBySum(int sum) {
         ListNode listNode = new ListNode();
+        listNode.val = sum;
 
-        if (start != len) {
-            start++;
-            listNode.next = createListNodeBySum(sum, start, len);
+        if(sum >= 10) {
+            listNode.val = sum%10;
+            sum/=10;
+            listNode.next = createListNodeBySum(sum);
         }
 
-        listNode.val = sum / (10 ^ start);
-
         return listNode;
+    }
+
+    public int getHightNumber(int num) {
+        if(num >= 10) {
+            num -= (num%10);
+            num/=10;
+            num = getHightNumber(num);
+        }
+
+        return num;
     }
 
     public ListNode createListNode(int val) {
