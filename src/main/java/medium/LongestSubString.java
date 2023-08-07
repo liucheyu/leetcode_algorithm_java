@@ -2,9 +2,7 @@ package medium;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * https://leetcode.com/problems/longest-substring-without-repeating-characters/
@@ -14,39 +12,62 @@ public class LongestSubString {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(  solution.lengthOfLongestSubstring("aab"));
+        System.out.println(solution.lengthOfLongestSubstring("au"));
 
     }
 
     static class Solution {
         /**
          * 1. 迴圈走訪
-
          */
         public int lengthOfLongestSubstring(String s) {
             byte[] asciis = s.getBytes();
-            List<Byte> collect = new ArrayList<>() ;
-            byte crr;
-            int max = 0;
+            if (asciis.length == 0) {
+                return 0;
+            }
 
+            if (asciis.length == 1) {
+                return 1;
+            }
+
+            int left = 0;
+            int right = 1;
+            byte current;
+            int maxLenth = 0;
+            int crrLength = 0;
+            int removeEnd;
+            //Set<Byte> set = new HashSet<>();
+            Map<Byte, Integer> map = new HashMap<>();
+            boolean availible;
             for (int i = 0; i < asciis.length; i++) {
-                crr = asciis[i];
-               if(!collect.contains(crr)) {
-                   collect.add(crr);
-               } else {
-                   if(collect.size() > max) {
-                       max = collect.size();
-                   }
-                   collect = new ArrayList<>() ;
-               }
+                current = asciis[i];
+                //availible = set.add(current);
+                availible = !map.containsKey(current);
+                right = i;
+                crrLength = right - left + 1;
+                if (!availible) {
+                    if (crrLength > maxLenth) {
+                        maxLenth = crrLength;
+                    }
+
+                    removeEnd = map.get(current);
+                    for (int j = left; j <= removeEnd; j++) {
+                        map.remove(asciis[j]);
+                    }
+
+                    left = removeEnd + 1;
+                }
+                map.put(current, i);
+
 
             }
 
-            if(collect.size() > max) {
-                max = collect.size();
+            if (crrLength > maxLenth) {
+                maxLenth = crrLength;
             }
 
-            return max;
+
+            return maxLenth;
         }
 
 
