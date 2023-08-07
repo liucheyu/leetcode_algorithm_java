@@ -1,8 +1,10 @@
 package medium;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 /**
  * https://leetcode.com/problems/longest-substring-without-repeating-characters/
@@ -12,7 +14,7 @@ public class LongestSubString {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(  solution.lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(  solution.lengthOfLongestSubstring("aab"));
 
     }
 
@@ -22,16 +24,29 @@ public class LongestSubString {
 
          */
         public int lengthOfLongestSubstring(String s) {
-            byte[] asciis = s.getBytes(Charset.forName("ASCII"));
+            byte[] asciis = s.getBytes();
+            List<Byte> collect = new ArrayList<>() ;
             byte crr;
-            byte next;
-            int count = 0;
+            int max = 0;
 
-            for (int i = 0; i+1 < asciis.length; i++) {
-
+            for (int i = 0; i < asciis.length; i++) {
+                crr = asciis[i];
+               if(!collect.contains(crr)) {
+                   collect.add(crr);
+               } else {
+                   if(collect.size() > max) {
+                       max = collect.size();
+                   }
+                   collect = new ArrayList<>() ;
+               }
 
             }
 
+            if(collect.size() > max) {
+                max = collect.size();
+            }
+
+            return max;
         }
 
 
